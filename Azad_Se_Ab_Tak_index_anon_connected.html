@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Azad Se Ab Tak</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:#f7f5fb;color:#201c2c}header{position:sticky;top:0;z-index:5;background:#21183b;color:white;padding:14px 6%;display:flex;justify-content:space-between;align-items:center}.logo{font-weight:900}.logo b{color:#ffd166}button{border:0;border-radius:9px;padding:10px 15px;font-weight:700;cursor:pointer}.primary{background:#6d4aff;color:white}.muted{background:#eee9f7}.danger{background:#ffe2e2;color:#a51f1f}.hero{padding:80px 7%;text-align:center;background:linear-gradient(135deg,#21183b,#6044a1);color:white}.hero h1{font-size:clamp(45px,8vw,80px);margin:0}.hero p{font-size:19px;color:#e8e2fb}.wrap{max-width:1100px;margin:auto;padding:55px 20px}.title{text-align:center;margin-bottom:30px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:white;border:1px solid #e9e3f0;border-radius:16px;padding:18px;box-shadow:0 8px 25px #21183b0b}.avatar{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:#eee8ff;font-size:28px}.photo{width:100%;height:210px;object-fit:cover;border-radius:12px}.panel{display:none;max-width:900px;margin:25px auto;background:white;border-radius:16px;padding:22px;box-shadow:0 8px 25px #21183b18}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form input,.form textarea{width:100%;padding:12px;border:1px solid #ddd5e9;border-radius:8px;font:inherit}.form textarea{grid-column:1/-1;min-height:90px}.full{grid-column:1/-1}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tabs button.active{background:#6d4aff;color:white}.notice{background:#fff6d7;padding:12px;border-radius:9px;margin-bottom:15px}.row{display:flex;gap:8px;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;padding:10px 0}.small{font-size:12px;color:#777}.empty{text-align:center;color:#777;padding:25px}.status{margin:10px 0;padding:10px;border-radius:8px;background:#edf7ee;color:#17652a}footer{background:#21183b;color:#ddd;text-align:center;padding:35px}@media(max-width:700px){.grid{grid-template-columns:1fr}.form{grid-template-columns:1fr}.form textarea,.full{grid-column:auto}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header><div class="logo">AZAD SE AB TAK <b>✦</b></div><div><button id="loginBtn" class="muted" onclick="showLogin()">Admin Login</button><button id="logoutBtn" class="muted" style="display:none" onclick="logout()">Logout</button></div></header>
+
+<section class="hero"><h1>Azad Se Ab Tak</h1><p>Hamari dosti • Hamari memories • Hamari kahani ❤️</p></section>
+
+<section id="loginPanel" class="panel">
+<h2>Admin Login</h2><div class="notice">Only the admin account can add or delete content.</div>
+<div class="form"><input id="email" type="email" placeholder="Admin email"><input id="password" type="password" placeholder="Password"><button class="primary full" onclick="login()">Login</button></div>
+<div id="loginStatus"></div>
+</section>
+
+<section id="adminPanel" class="panel">
+<h2>🔐 Admin Panel</h2><div id="status" class="status">Connected.</div>
+<div class="tabs"><button class="muted active" onclick="tab('friend',this)">Add Friend</button><button class="muted" onclick="tab('memory',this)">Add Memory</button><button class="muted" onclick="tab('event',this)">Add Event</button></div>
+
+<div id="friendForm"><div class="form"><input id="fname" placeholder="Friend name"><input id="frole" placeholder="Nickname / role"><input id="femoji" value="😎" placeholder="Emoji"><button class="primary full" onclick="addFriend()">Save Friend</button></div></div>
+
+<div id="memoryForm" style="display:none"><div class="form"><input id="mtitle" placeholder="Memory title"><input id="mdate" type="date"><input id="mphoto" type="file" accept="image/*"><textarea id="mcaption" placeholder="Caption"></textarea><button class="primary full" onclick="addMemory()">Upload & Save Memory</button></div></div>
+
+<div id="eventForm" style="display:none"><div class="form"><input id="etitle" placeholder="Event / meetup name"><input id="edate" type="date"><input id="eloc" placeholder="Location"><button class="primary full" onclick="addEvent()">Save Event</button></div></div>
+<hr><h3>Manage Content</h3><div id="manage"></div>
+</section>
+
+<section class="wrap"><div class="title"><h2>👊 Our Gang</h2><p>Friends added by the admin.</p></div><div id="friends" class="grid"></div></section>
+<section class="wrap"><div class="title"><h2>📸 Memories</h2><p>Shared memories from the gang.</p></div><div id="memories" class="grid"></div></section>
+<section class="wrap"><div class="title"><h2>📅 Events</h2></div><div id="events" class="grid"></div></section>
+<footer>Made with ❤️ for Azad Se Ab Tak</footer>
+
+<script>
+const SUPABASE_URL="https://tqsvrclaaqjjechuhyj.supabase.co";
+const SUPABASE_ANON_KEY="sb_publishable_5ILh9zfeLO5DRt3eOuso_g_xtX_wn4S";
+const configured=!SUPABASE_URL.startsWith("PASTE_")&&!SUPABASE_ANON_KEY.startsWith("PASTE_");
+const sb=configured?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
+const $=id=>document.getElementById(id);
+function msg(t,ok=true){$("status").textContent=t;$("status").style.background=ok?"#edf7ee":"#ffecec";$("status").style.color=ok?"#17652a":"#9f1c1c";}
+function showLogin(){$("loginPanel").style.display="block";$("loginPanel").scrollIntoView({behavior:"smooth"});}
+async function login(){if(!sb)return alert("Supabase is not configured correctly.");let {error}=await sb.auth.signInWithPassword({email:$("email").value,password:$("password").value});if(error)$("loginStatus").textContent=error.message;else $("loginPanel").style.display="none";}
+async function logout(){await sb.auth.signOut();location.reload();}
+function tab(t,b){document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("active"));b.classList.add("active");["friend","memory","event"].forEach(x=>$(`${x}Form`).style.display=x===t?"block":"none");}
+async function addFriend(){if(!sb)return;let name=$("fname").value.trim();if(!name)return alert("Enter a name");let {error}=await sb.from("friends").insert({name,role:$("frole").value,emoji:$("femoji").value||"😎"});if(error)return msg(error.message,false);$("fname").value=$("frole").value="";await load();}
+async function addMemory(){if(!sb)return;let title=$("mtitle").value.trim(),file=$("mphoto").files[0];if(!title||!file)return alert("Title and photo are required");if(file.size>6*1024*1024)return alert("For this version keep photos under 6 MB.");let path=crypto.randomUUID()+"-"+file.name.replace(/[^a-zA-Z0-9._-]/g,"_");let up=await sb.storage.from("memories").upload(path,file,{contentType:file.type});if(up.error)return msg(up.error.message,false);let pub=sb.storage.from("memories").getPublicUrl(path).data.publicUrl;let {error}=await sb.from("memories").insert({title,date:$("mdate").value,caption:$("mcaption").value,image_url:pub,storage_path:path});if(error)return msg(error.message,false);$("mtitle").value=$("mdate").value=$("mcaption").value="";$("mphoto").value="";await load();}
+async function addEvent(){if(!sb)return;let title=$("etitle").value.trim();if(!title)return alert("Enter event");let {error}=await sb.from("events").insert({title,date:$("edate").value,location:$("eloc").value});if(error)return msg(error.message,false);$("etitle").value=$("edate").value=$("eloc").value="";await load();}
+async function del(table,id,storagePath){if(!confirm("Delete this item?"))return;if(table==="memories"&&storagePath)await sb.storage.from("memories").remove([storagePath]);let {error}=await sb.from(table).delete().eq("id",id);if(error)msg(error.message,false);else await load();}
+async function load(){if(!sb){$("friends").innerHTML='<div class="empty">Supabase setup required.</div>';return}
+ let f=await sb.from("friends").select("*").order("created_at",{ascending:false});let m=await sb.from("memories").select("*").order("created_at",{ascending:false});let e=await sb.from("events").select("*").order("date",{ascending:true});
+ if(f.error||m.error||e.error){msg((f.error||m.error||e.error).message,false);return}
+ $("friends").innerHTML=f.data.length?f.data.map(x=>`<div class="card"><div class="avatar">${esc(x.emoji)}</div><h3>${esc(x.name)}</h3><p>${esc(x.role)}</p></div>`).join(""):'<div class="empty">No friends added.</div>';
+ $("memories").innerHTML=m.data.length?m.data.map(x=>`<div class="card"><img class="photo" src="${x.image_url}" alt=""><h3>${esc(x.title)}</h3><div class="small">${esc(x.date)}</div><p>${esc(x.caption)}</p></div>`).join(""):'<div class="empty">No memories added.</div>';
+ $("events").innerHTML=e.data.length?e.data.map(x=>`<div class="card"><h3>${esc(x.title)}</h3><p>📅 ${esc(x.date)}<br>📍 ${esc(x.location)}</p></div>`).join(""):'<div class="empty">No events added.</div>';
+ let s=[...f.data.map(x=>`<div class="row">👤 ${esc(x.name)} <button class="danger" onclick="del('friends','${x.id}')">Delete</button></div>`),...m.data.map(x=>`<div class="row">📸 ${esc(x.title)} <button class="danger" onclick="del('memories','${x.id}','${esc(x.storage_path)}')">Delete</button></div>`),...e.data.map(x=>`<div class="row">📅 ${esc(x.title)} <button class="danger" onclick="del('events','${x.id}')">Delete</button></div>`)];$("manage").innerHTML=s.join("")||'<div class="empty">Nothing yet.</div>';}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+async function init(){if(!configured){msg("Supabase is not configured yet.",false);return}let {data:{session}}=await sb.auth.getSession();if(session){$("loginBtn").style.display="none";$("logoutBtn").style.display="inline-block";$("adminPanel").style.display="block";}await load();}
+init();
+</script>
+</body></html>

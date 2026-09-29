@@ -38,7 +38,7 @@
 
 <script>
 const SUPABASE_URL="https://tqsvrrclaaqjjechhuyj.supabase.co";
-const SUPABASE_ANON_KEY="sb_publishable_5ILH9zfeLO5DRt3eOuso_g_xtX_wn4S";
+const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxc3ZycmNsYWFxamplY2hodXlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2Mzc0NjIsImV4cCI6MjEwNjIxMzQ2Mn0.tdSqqwv1WkbwnthKT-0o64sq3inxTAGRevyBUGLire4";
 const configured=!SUPABASE_URL.startsWith("PASTE_")&&!SUPABASE_ANON_KEY.startsWith("PASTE_");
 const sb=configured?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
 const $=id=>document.getElementById(id);

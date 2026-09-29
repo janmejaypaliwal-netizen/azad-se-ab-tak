@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Azad Se Ab Tak — V2</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:#f6f4fb;color:#20202a}header{background:#21183b;color:#fff;padding:16px 6%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:4}.logo{font-weight:900}.logo b{color:#ffd166}button{border:0;border-radius:9px;padding:10px 15px;font-weight:700;cursor:pointer}.primary{background:#6d4aff;color:#fff}.danger{background:#ffe4e4;color:#b42318}.admin{background:#fff;color:#21183b}.hero{padding:75px 7%;text-align:center;background:linear-gradient(135deg,#21183b,#563a9a);color:#fff}.hero h1{font-size:clamp(44px,8vw,82px);margin:0}.hero p{font-size:18px;color:#e9e3ff}.wrap{max-width:1100px;margin:auto;padding:55px 20px}.title{text-align:center;margin-bottom:30px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid #e8e3ef;border-radius:16px;padding:18px;box-shadow:0 8px 25px #22183b0b}.avatar{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;background:#eee7ff;font-size:28px}.memory{min-height:170px;border-radius:15px;padding:18px;color:#fff;display:flex;align-items:end;background:linear-gradient(135deg,#ff7b54,#6047a9)}.memory:nth-child(2n){background:linear-gradient(135deg,#267b91,#292a62)}.memory:nth-child(3n){background:linear-gradient(135deg,#d66b37,#7a3b77)}.panel{display:none;background:#fff;border-radius:16px;padding:22px;margin:20px auto;max-width:900px;box-shadow:0 8px 25px #22183b18}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.tabs button{background:#eeeaf8}.tabs button.active{background:#6d4aff;color:#fff}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form input,.form textarea{width:100%;padding:12px;border:1px solid #dcd6e7;border-radius:8px;font:inherit}.form textarea{min-height:90px;grid-column:1/-1}.full{grid-column:1/-1}.notice{background:#fff7dc;padding:12px;border-radius:9px;margin-bottom:15px;color:#6b5300}.empty{text-align:center;color:#777;padding:25px}.small{font-size:12px;color:#777}footer{text-align:center;background:#21183b;color:#ddd;padding:35px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.form{grid-template-columns:1fr}.form textarea,.full{grid-column:auto}nav{display:none}}
+</style>
+</head>
+<body>
+<header><div class="logo">AZAD SE AB TAK <b>✦</b></div><div><button class="admin" onclick="openAdmin()">Admin Panel</button></div></header>
+
+<section class="hero"><h1>Azad Se Ab Tak</h1><p>Hamari dosti. Hamari stories. Hamari memories. ❤️</p></section>
+
+<div id="adminPanel" class="panel">
+ <h2>🔐 Friends Admin Panel</h2>
+ <div class="notice">Demo mode: default password is <b>azad123</b>. This browser-only demo stores content in this device's local storage. For a real shared website, connect a hosted database/authentication service.</div>
+ <div class="tabs">
+  <button class="active" onclick="tab('friend',this)">Add Friend</button>
+  <button onclick="tab('memory',this)">Add Memory</button>
+  <button onclick="tab('event',this)">Add Event</button>
+ </div>
+ <div id="friendForm">
+  <div class="form"><input id="fname" placeholder="Friend name"><input id="frole" placeholder="Nickname / role"><input id="femoji" placeholder="Emoji e.g. 😎" value="😎"><button class="primary full" onclick="addFriend()">Save Friend</button></div>
+ </div>
+ <div id="memoryForm" style="display:none">
+  <div class="form"><input id="mtitle" placeholder="Memory title"><input id="mdate" type="date"><textarea id="mcaption" placeholder="Caption"></textarea><button class="primary full" onclick="addMemory()">Save Memory</button></div>
+ </div>
+ <div id="eventForm" style="display:none">
+  <div class="form"><input id="etitle" placeholder="Event / meetup name"><input id="edate" type="date"><input id="eloc" placeholder="Location"><button class="primary full" onclick="addEvent()">Save Event</button></div>
+ </div>
+ <hr><h3>Manage Content</h3><div id="manage"></div>
+</div>
+
+<section class="wrap"><div class="title"><h2>👊 Our Gang</h2><p>Friends you add from the admin panel appear here.</p></div><div id="friends" class="grid"></div></section>
+<section class="wrap"><div class="title"><h2>📸 Memories</h2><p>Your saved memories.</p></div><div id="memories" class="grid"></div></section>
+<section class="wrap"><div class="title"><h2>📅 Meetups & Events</h2></div><div id="events" class="grid"></div></section>
+
+<footer>Made with ❤️ for Azad Se Ab Tak<br><span class="small">Private friends website</span></footer>
+
+<script>
+const key='azadV2';
+let data=JSON.parse(localStorage.getItem(key)||'{"friends":[],"memories":[],"events":[]}');
+function save(){localStorage.setItem(key,JSON.stringify(data));render();}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
+function render(){
+ document.getElementById('friends').innerHTML=data.friends.length?data.friends.map((x,i)=>`<div class="card"><div class="avatar">${esc(x.emoji)}</div><h3>${esc(x.name)}</h3><div>${esc(x.role)}</div></div>`).join(''):'<div class="empty">No friends added yet.</div>';
+ document.getElementById('memories').innerHTML=data.memories.length?data.memories.map((x,i)=>`<div class="memory"><div><b>${esc(x.title)}</b><br><span class="small">${esc(x.date)}</span><br>${esc(x.caption)}</div></div>`).join(''):'<div class="empty">No memories added yet.</div>';
+ document.getElementById('events').innerHTML=data.events.length?data.events.map(x=>`<div class="card"><h3>${esc(x.title)}</h3><b>${esc(x.date)}</b><p>📍 ${esc(x.location)}</p></div>`).join(''):'<div class="empty">No events added yet.</div>';
+ document.getElementById('manage').innerHTML=
+ [...data.friends.map((x,i)=>`<p>👤 ${esc(x.name)} <button class="danger" onclick="del('friends',${i})">Delete</button></p>`),
+ ...data.memories.map((x,i)=>`<p>📸 ${esc(x.title)} <button class="danger" onclick="del('memories',${i})">Delete</button></p>`),
+ ...data.events.map((x,i)=>`<p>📅 ${esc(x.title)} <button class="danger" onclick="del('events',${i})">Delete</button></p>`)].join('')||'<p class="small">Nothing to manage yet.</p>';
+}
+function openAdmin(){if(prompt('Enter admin password:')==='azad123')document.getElementById('adminPanel').style.display='block';else alert('Wrong password');}
+function tab(t,b){document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');['friend','memory','event'].forEach(x=>document.getElementById(x+'Form').style.display=x===t?'block':'none');}
+function addFriend(){let n=fname.value.trim();if(!n)return alert('Enter friend name');data.friends.push({name:n,role:frole.value,emoji:femoji.value||'😎'});fname.value=frole.value='';save();}
+function addMemory(){let t=mtitle.value.trim();if(!t)return alert('Enter title');data.memories.push({title:t,date:mdate.value,caption:mcaption.value});mtitle.value=mdate.value=mcaption.value='';save();}
+function addEvent(){let t=etitle.value.trim();if(!t)return alert('Enter event');data.events.push({title:t,date:edate.value,location:eloc.value});etitle.value=edate.value=eloc.value='';save();}
+function del(type,i){if(confirm('Delete this item?')){data[type].splice(i,1);save();}}
+render();
+</script>
+</body></html>

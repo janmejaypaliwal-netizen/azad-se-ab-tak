@@ -7,38 +7,207 @@
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,Arial;background:#f7f5fb;color:#201c2c}
-header{position:sticky;top:0;z-index:5;background:#21183b;color:white;padding:14px 6%;display:flex;justify-content:space-between;align-items:center}
+
+body{
+margin:0;
+font-family:system-ui,Arial;
+background:#f7f5fb;
+color:#201c2c
+}
+
+header{
+position:sticky;
+top:0;
+z-index:5;
+background:#21183b;
+color:white;
+padding:14px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+
 .logo{font-weight:900}
 .logo b{color:#ffd166}
-button{border:0;border-radius:9px;padding:10px 15px;font-weight:700;cursor:pointer}
-.primary{background:#6d4aff;color:white}
-.muted{background:#eee9f7}
-.danger{background:#ffe2e2;color:#a51f1f}
-.hero{padding:80px 7%;text-align:center;background:linear-gradient(135deg,#21183b,#6044a1);color:white}
-.hero h1{font-size:clamp(45px,8vw,80px);margin:0}
-.hero p{font-size:19px;color:#e8e2fb}
-.wrap{max-width:1100px;margin:auto;padding:55px 20px}
-.title{text-align:center;margin-bottom:30px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:white;border:1px solid #e9e3f0;border-radius:16px;padding:18px;box-shadow:0 8px 25px #21183b0b}
-.avatar{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:#eee8ff;font-size:28px}
-.photo{width:100%;height:210px;object-fit:cover;border-radius:12px}
-.panel{display:none;max-width:900px;margin:25px auto;background:white;border-radius:16px;padding:22px;box-shadow:0 8px 25px #21183b18}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form input,.form textarea{width:100%;padding:12px;border:1px solid #ddd5e9;border-radius:8px;font:inherit}
-.form textarea{grid-column:1/-1;min-height:90px}
-.full{grid-column:1/-1}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.tabs button.active{background:#6d4aff;color:white}
-.notice{background:#fff6d7;padding:12px;border-radius:9px;margin-bottom:15px}
-.row{display:flex;gap:8px;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;padding:10px 0}
-.small{font-size:12px;color:#777}
-.empty{text-align:center;color:#777;padding:25px}
-.status{margin:10px 0;padding:10px;border-radius:8px;background:#edf7ee;color:#17652a}
+
+button{
+border:0;
+border-radius:9px;
+padding:10px 15px;
+font-weight:700;
+cursor:pointer
+}
+
+.primary{
+background:#6d4aff;
+color:white
+}
+
+.muted{
+background:#eee9f7
+}
+
+.danger{
+background:#ffe2e2;
+color:#a51f1f
+}
+
+.hero{
+padding:80px 7%;
+text-align:center;
+background:linear-gradient(135deg,#21183b,#6044a1);
+color:white
+}
+
+.hero h1{
+font-size:clamp(45px,8vw,80px);
+margin:0
+}
+
+.hero p{
+font-size:19px;
+color:#e8e2fb
+}
+
+.wrap{
+max-width:1100px;
+margin:auto;
+padding:55px 20px
+}
+
+.title{
+text-align:center;
+margin-bottom:30px
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px
+}
+
+.card{
+background:white;
+border:1px solid #e9e3f0;
+border-radius:16px;
+padding:18px;
+box-shadow:0 8px 25px #21183b0b
+}
+
+.avatar{
+width:110px;
+height:110px;
+border-radius:50%;
+overflow:hidden;
+display:grid;
+place-items:center;
+background:#eee8ff;
+font-size:42px;
+margin-bottom:15px
+}
+
+.avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block
+}
+
+.photo{
+width:100%;
+height:210px;
+object-fit:cover;
+border-radius:12px
+}
+
+.panel{
+display:none;
+max-width:900px;
+margin:25px auto;
+background:white;
+border-radius:16px;
+padding:22px;
+box-shadow:0 8px 25px #21183b18
+}
+
+.form{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
+}
+
+.form input,
+.form textarea{
+width:100%;
+padding:12px;
+border:1px solid #ddd5e9;
+border-radius:8px;
+font:inherit
+}
+
+.form textarea{
+grid-column:1/-1;
+min-height:90px
+}
+
+.full{
+grid-column:1/-1
+}
+
+.tabs{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:18px
+}
+
+.tabs button.active{
+background:#6d4aff;
+color:white
+}
+
+.notice{
+background:#fff6d7;
+padding:12px;
+border-radius:9px;
+margin-bottom:15px
+}
+
+.row{
+display:flex;
+gap:8px;
+align-items:center;
+justify-content:space-between;
+border-bottom:1px solid #eee;
+padding:10px 0
+}
+
+.small{
+font-size:12px;
+color:#777
+}
+
+.empty{
+text-align:center;
+color:#777;
+padding:25px
+}
+
+.status{
+margin:10px 0;
+padding:10px;
+border-radius:8px;
+background:#edf7ee;
+color:#17652a
+}
 
 /* DISCUSSION */
-.discussion-list{display:grid;gap:16px}
+
+.discussion-list{
+display:grid;
+gap:16px
+}
+
 .discussion-card{
 background:white;
 border:1px solid #e9e3f0;
@@ -46,25 +215,63 @@ border-radius:16px;
 padding:20px;
 box-shadow:0 8px 25px #21183b0b
 }
-.discussion-card h3{margin:0 0 7px}
-.discussion-meta{font-size:12px;color:#777;margin-bottom:12px}
-.discussion-content{white-space:pre-wrap;line-height:1.55}
-.discussion-actions{display:flex;gap:8px;align-items:center;margin-top:15px;flex-wrap:wrap}
-.reply-box{margin-top:15px;padding-top:15px;border-top:1px solid #eee}
-.reply{background:#f7f5fb;border-radius:10px;padding:10px 12px;margin-top:8px}
+
+.discussion-card h3{
+margin:0 0 7px
+}
+
+.discussion-meta{
+font-size:12px;
+color:#777;
+margin-bottom:12px
+}
+
+.discussion-content{
+white-space:pre-wrap;
+line-height:1.55
+}
+
+.discussion-actions{
+display:flex;
+gap:8px;
+align-items:center;
+margin-top:15px;
+flex-wrap:wrap
+}
+
+.reply-box{
+margin-top:15px;
+padding-top:15px;
+border-top:1px solid #eee
+}
+
+.reply{
+background:#f7f5fb;
+border-radius:10px;
+padding:10px 12px;
+margin-top:8px
+}
+
 .reply-form{
 display:grid;
 grid-template-columns:180px 1fr auto;
 gap:8px;
 margin-top:10px
 }
-.reply-form input,.reply-form textarea{
+
+.reply-form input,
+.reply-form textarea{
 padding:10px;
 border:1px solid #ddd5e9;
 border-radius:8px;
 font:inherit
 }
-.reply-form textarea{min-height:44px;resize:vertical}
+
+.reply-form textarea{
+min-height:44px;
+resize:vertical
+}
+
 .discussion-form{
 background:white;
 border:1px solid #e9e3f0;
@@ -73,7 +280,9 @@ padding:20px;
 margin-bottom:20px;
 box-shadow:0 8px 25px #21183b0b
 }
-.discussion-form input,.discussion-form textarea{
+
+.discussion-form input,
+.discussion-form textarea{
 width:100%;
 padding:12px;
 border:1px solid #ddd5e9;
@@ -81,10 +290,12 @@ border-radius:8px;
 font:inherit;
 margin-bottom:10px
 }
+
 .discussion-form textarea{
 min-height:110px;
 resize:vertical
 }
+
 .discussion-head{
 display:flex;
 justify-content:space-between;
@@ -93,13 +304,32 @@ gap:10px;
 flex-wrap:wrap
 }
 
-footer{background:#21183b;color:#ddd;text-align:center;padding:35px}
+footer{
+background:#21183b;
+color:#ddd;
+text-align:center;
+padding:35px
+}
 
 @media(max-width:700px){
-.grid{grid-template-columns:1fr}
-.form{grid-template-columns:1fr}
-.form textarea,.full{grid-column:auto}
-.reply-form{grid-template-columns:1fr}
+
+.grid{
+grid-template-columns:1fr
+}
+
+.form{
+grid-template-columns:1fr
+}
+
+.form textarea,
+.full{
+grid-column:auto
+}
+
+.reply-form{
+grid-template-columns:1fr
+}
+
 }
 </style>
 
@@ -109,25 +339,58 @@ footer{background:#21183b;color:#ddd;text-align:center;padding:35px}
 <body>
 
 <header>
-<div class="logo">AZAD SE AB TAK <b>✦</b></div>
+
+<div class="logo">
+AZAD SE AB TAK <b>✦</b>
+</div>
 
 <div>
-<button id="loginBtn" class="muted" onclick="showLogin()">Admin Login</button>
-<button id="logoutBtn" class="muted" style="display:none" onclick="logout()">Logout</button>
+
+<button
+id="loginBtn"
+class="muted"
+onclick="showLogin()"
+>
+Admin Login
+</button>
+
+<button
+id="logoutBtn"
+class="muted"
+style="display:none"
+onclick="logout()"
+>
+Logout
+</button>
+
 </div>
+
 </header>
 
+
 <section class="hero">
-<h1>Azad Se Ab Tak</h1>
-<p>Hamari dosti • Hamari memories • Hamari kahani ❤️</p>
+
+<h1>
+Azad Se Ab Tak
+</h1>
+
+<p>
+Hamari dosti • Hamari memories • Hamari kahani ❤️
+</p>
+
 </section>
 
 
 <!-- ADMIN LOGIN -->
 
-<section id="loginPanel" class="panel">
+<section
+id="loginPanel"
+class="panel"
+>
 
-<h2>Admin Login</h2>
+<h2>
+Admin Login
+</h2>
 
 <div class="notice">
 Only the admin account can add or delete content.
@@ -135,11 +398,24 @@ Only the admin account can add or delete content.
 
 <div class="form">
 
-<input id="email" type="email" placeholder="Admin email">
+<input
+id="email"
+type="email"
+placeholder="Admin email"
+>
 
-<input id="password" type="password" placeholder="Password">
+<input
+id="password"
+type="password"
+placeholder="Password"
+>
 
-<button class="primary full" onclick="login()">Login</button>
+<button
+class="primary full"
+onclick="login()"
+>
+Login
+</button>
 
 </div>
 
@@ -150,43 +426,81 @@ Only the admin account can add or delete content.
 
 <!-- ADMIN PANEL -->
 
-<section id="adminPanel" class="panel">
+<section
+id="adminPanel"
+class="panel"
+>
 
-<h2>🔐 Admin Panel</h2>
+<h2>
+🔐 Admin Panel
+</h2>
 
-<div id="status" class="status">
+<div
+id="status"
+class="status"
+>
 Connected.
 </div>
 
+
 <div class="tabs">
 
-<button class="muted active" onclick="tab('friend',this)">
+<button
+class="muted active"
+onclick="tab('friend',this)"
+>
 Add Friend
 </button>
 
-<button class="muted" onclick="tab('memory',this)">
+<button
+class="muted"
+onclick="tab('memory',this)"
+>
 Add Memory
 </button>
 
-<button class="muted" onclick="tab('event',this)">
+<button
+class="muted"
+onclick="tab('event',this)"
+>
 Add Event
 </button>
 
 </div>
 
 
+<!-- FRIEND FORM -->
+
 <div id="friendForm">
 
 <div class="form">
 
-<input id="fname" placeholder="Friend name">
+<input
+id="fname"
+placeholder="Friend name"
+>
 
-<input id="frole" placeholder="Nickname / role">
-<input id="fphoto" type="file" accept="image/*">
+<input
+id="frole"
+placeholder="Nickname / role"
+>
 
-<input id="femoji" value="😎" placeholder="Emoji">
+<input
+id="fphoto"
+type="file"
+accept="image/*"
+>
 
-<button class="primary full" onclick="addFriend()">
+<input
+id="femoji"
+value="😎"
+placeholder="Emoji"
+>
+
+<button
+class="primary full"
+onclick="addFriend()"
+>
 📷 Save Friend with Photo
 </button>
 
@@ -195,19 +509,40 @@ Add Event
 </div>
 
 
-<div id="memoryForm" style="display:none">
+<!-- MEMORY FORM -->
+
+<div
+id="memoryForm"
+style="display:none"
+>
 
 <div class="form">
 
-<input id="mtitle" placeholder="Memory title">
+<input
+id="mtitle"
+placeholder="Memory title"
+>
 
-<input id="mdate" type="date">
+<input
+id="mdate"
+type="date"
+>
 
-<input id="mphoto" type="file" accept="image/*">
+<input
+id="mphoto"
+type="file"
+accept="image/*"
+>
 
-<textarea id="mcaption" placeholder="Caption"></textarea>
+<textarea
+id="mcaption"
+placeholder="Caption"
+></textarea>
 
-<button class="primary full" onclick="addMemory()">
+<button
+class="primary full"
+onclick="addMemory()"
+>
 Upload & Save Memory
 </button>
 
@@ -216,17 +551,34 @@ Upload & Save Memory
 </div>
 
 
-<div id="eventForm" style="display:none">
+<!-- EVENT FORM -->
+
+<div
+id="eventForm"
+style="display:none"
+>
 
 <div class="form">
 
-<input id="etitle" placeholder="Event / meetup name">
+<input
+id="etitle"
+placeholder="Event / meetup name"
+>
 
-<input id="edate" type="date">
+<input
+id="edate"
+type="date"
+>
 
-<input id="eloc" placeholder="Location">
+<input
+id="eloc"
+placeholder="Location"
+>
 
-<button class="primary full" onclick="addEvent()">
+<button
+class="primary full"
+onclick="addEvent()"
+>
 Save Event
 </button>
 
@@ -234,9 +586,12 @@ Save Event
 
 </div>
 
+
 <hr>
 
-<h3>Manage Content</h3>
+<h3>
+Manage Content
+</h3>
 
 <div id="manage"></div>
 
@@ -249,13 +604,20 @@ Save Event
 
 <div class="title">
 
-<h2>👊 Our Gang</h2>
+<h2>
+👊 Our Gang
+</h2>
 
-<p>Friends added by the admin.</p>
+<p>
+Friends added by the admin.
+</p>
 
 </div>
 
-<div id="friends" class="grid"></div>
+<div
+id="friends"
+class="grid"
+></div>
 
 </section>
 
@@ -266,13 +628,20 @@ Save Event
 
 <div class="title">
 
-<h2>📸 Memories</h2>
+<h2>
+📸 Memories
+</h2>
 
-<p>Shared memories from the gang.</p>
+<p>
+Shared memories from the gang.
+</p>
 
 </div>
 
-<div id="memories" class="grid"></div>
+<div
+id="memories"
+class="grid"
+></div>
 
 </section>
 
@@ -283,22 +652,32 @@ Save Event
 
 <div class="title">
 
-<h2>📅 Events</h2>
+<h2>
+📅 Events
+</h2>
 
 </div>
 
-<div id="events" class="grid"></div>
+<div
+id="events"
+class="grid"
+></div>
 
 </section>
 
 
 <!-- DISCUSSION -->
 
-<section class="wrap" id="discussionSection">
+<section
+class="wrap"
+id="discussionSection"
+>
 
 <div class="title">
 
-<h2>💬 Discussion</h2>
+<h2>
+💬 Discussion
+</h2>
 
 <p>
 Gang ke members yahan discussion start aur reply kar sakte hain.
@@ -353,7 +732,10 @@ style="margin-top:10px"
 </div>
 
 
-<div id="discussionList" class="discussion-list">
+<div
+id="discussionList"
+class="discussion-list"
+>
 
 <div class="empty">
 Loading discussions...
@@ -371,9 +753,9 @@ Made with ❤️ for Azad Se Ab Tak
 
 <script>
 
-/* ================================
+/* =================================
 SUPABASE
-================================ */
+================================= */
 
 const SUPABASE_URL =
 "https://tqsvrrclaaqjjechhuyj.supabase.co";
@@ -387,29 +769,39 @@ const configured =
 
 const sb =
 configured
-? supabase.createClient(
+?
+supabase.createClient(
 SUPABASE_URL,
 SUPABASE_ANON_KEY
 )
-:null;
+:
+null;
+
+const $=id=>
+document.getElementById(id);
 
 
-const $=id=>document.getElementById(id);
-
-
-/* ================================
+/* =================================
 GENERAL
-================================ */
+================================= */
 
 function msg(t,ok=true){
 
 $("status").textContent=t;
 
 $("status").style.background =
-ok ? "#edf7ee" : "#ffecec";
+ok
+?
+"#edf7ee"
+:
+"#ffecec";
 
 $("status").style.color =
-ok ? "#17652a" : "#9f1c1c";
+ok
+?
+"#17652a"
+:
+"#9f1c1c";
 
 }
 
@@ -419,7 +811,11 @@ function discussionMsg(t,ok=true){
 $("discussionStatus").textContent=t;
 
 $("discussionStatus").style.color =
-ok ? "#17652a" : "#a51f1f";
+ok
+?
+"#17652a"
+:
+"#a51f1f";
 
 }
 
@@ -435,12 +831,22 @@ behavior:"smooth"
 }
 
 
+/* =================================
+LOGIN
+================================= */
+
 async function login(){
 
-if(!sb)
-return alert("Supabase is not configured correctly.");
+if(!sb){
 
-let {error}=await sb.auth.signInWithPassword({
+return alert(
+"Supabase is not configured correctly."
+);
+
+}
+
+let {error} =
+await sb.auth.signInWithPassword({
 
 email:$("email").value,
 
@@ -450,11 +856,18 @@ password:$("password").value
 
 if(error){
 
-$("loginStatus").textContent=error.message;
+$("loginStatus").textContent =
+error.message;
 
 }else{
 
 $("loginPanel").style.display="none";
+
+$("loginBtn").style.display="none";
+
+$("logoutBtn").style.display="inline-block";
+
+$("adminPanel").style.display="block";
 
 }
 
@@ -470,81 +883,259 @@ location.reload();
 }
 
 
+/* =================================
+TABS
+================================= */
+
 function tab(t,b){
 
 document
 .querySelectorAll(".tabs button")
-.forEach(x=>x.classList.remove("active"));
+.forEach(
+x=>x.classList.remove("active")
+);
 
 b.classList.add("active");
 
-["friend","memory","event"]
+[
+"friend",
+"memory",
+"event"
+]
 .forEach(x=>
-$(`${x}Form`).style.display=
-x===t?"block":"none"
+
+$(`${x}Form`).style.display =
+x===t
+?
+"block"
+:
+"none"
+
 );
 
 }
 
 
-/* ================================
-ADMIN FUNCTIONS
-================================ */
+/* =================================
+ADD FRIEND
+================================= */
 
 async function addFriend(){
 
 if(!sb)return;
 
-let name=$("fname").value.trim();
+let name =
+$("fname").value.trim();
 
-if(!name)
-return alert("Enter a name");
+let role =
+$("frole").value.trim();
 
-let {error}=await sb
+let emoji =
+$("femoji").value || "😎";
+
+let file =
+$("fphoto").files[0];
+
+if(!name){
+
+alert("Enter a name");
+
+return;
+
+}
+
+let photo_url=null;
+
+let photo_path=null;
+
+
+/* PHOTO UPLOAD */
+
+if(file){
+
+if(!file.type.startsWith("image/")){
+
+alert(
+"Please select an image file."
+);
+
+return;
+
+}
+
+if(
+file.size >
+5*1024*1024
+){
+
+alert(
+"Profile photo must be under 5 MB."
+);
+
+return;
+
+}
+
+
+photo_path =
+crypto.randomUUID()
++
+"-"
++
+file.name.replace(
+/[^a-zA-Z0-9._-]/g,
+"_"
+);
+
+
+msg(
+"Uploading profile photo..."
+);
+
+
+let up =
+await sb.storage
+.from("profiles")
+.upload(
+photo_path,
+file,
+{
+contentType:file.type,
+upsert:false
+}
+);
+
+
+if(up.error){
+
+return msg(
+"Photo upload failed: "
++
+up.error.message,
+false
+);
+
+}
+
+
+photo_url =
+sb.storage
+.from("profiles")
+.getPublicUrl(
+photo_path
+)
+.data.publicUrl;
+
+}
+
+
+/* SAVE FRIEND */
+
+let {error} =
+await sb
 .from("friends")
 .insert({
 
-name,
+name:name,
 
-role:$("frole").value,
+role:role,
 
-emoji:$("femoji").value||"😎"
+emoji:emoji,
+
+photo_url:photo_url,
+
+photo_path:photo_path
 
 });
 
-if(error)
-return msg(error.message,false);
+
+if(error){
+
+if(photo_path){
+
+await sb.storage
+.from("profiles")
+.remove(
+[photo_path]
+);
+
+}
+
+return msg(
+error.message,
+false
+);
+
+}
+
+
+/* CLEAR FORM */
 
 $("fname").value="";
+
 $("frole").value="";
+
+$("femoji").value="😎";
+
+$("fphoto").value="";
+
+
+msg(
+"Friend added successfully! 📷"
+);
+
 
 await load();
 
 }
 
 
+/* =================================
+ADD MEMORY
+================================= */
+
 async function addMemory(){
 
 if(!sb)return;
 
-let title=$("mtitle").value.trim();
+let title =
+$("mtitle").value.trim();
 
-let file=$("mphoto").files[0];
+let file =
+$("mphoto").files[0];
 
-if(!title||!file)
-return alert("Title and photo are required");
+if(!title||!file){
 
-if(file.size>6*1024*1024)
-return alert("For this version keep photos under 6 MB.");
+return alert(
+"Title and photo are required"
+);
 
-let path=
-crypto.randomUUID()+"-"+
+}
+
+if(
+file.size >
+6*1024*1024
+){
+
+return alert(
+"For this version keep photos under 6 MB."
+);
+
+}
+
+
+let path =
+crypto.randomUUID()
++
+"-"
++
 file.name.replace(
 /[^a-zA-Z0-9._-]/g,
 "_"
 );
 
-let up=
+
+let up =
 await sb.storage
 .from("memories")
 .upload(
@@ -555,21 +1146,30 @@ contentType:file.type
 }
 );
 
-if(up.error)
-return msg(up.error.message,false);
 
-let pub=
+if(up.error){
+
+return msg(
+up.error.message,
+false
+);
+
+}
+
+
+let pub =
 sb.storage
 .from("memories")
 .getPublicUrl(path)
 .data.publicUrl;
 
-let {error}=
+
+let {error} =
 await sb
 .from("memories")
 .insert({
 
-title,
+title:title,
 
 date:$("mdate").value,
 
@@ -581,8 +1181,16 @@ storage_path:path
 
 });
 
-if(error)
-return msg(error.message,false);
+
+if(error){
+
+return msg(
+error.message,
+false
+);
+
+}
+
 
 $("mtitle").value="";
 
@@ -592,26 +1200,38 @@ $("mcaption").value="";
 
 $("mphoto").value="";
 
+
 await load();
 
 }
 
 
+/* =================================
+ADD EVENT
+================================= */
+
 async function addEvent(){
 
 if(!sb)return;
 
-let title=$("etitle").value.trim();
+let title =
+$("etitle").value.trim();
 
-if(!title)
-return alert("Enter event");
+if(!title){
 
-let {error}=
+return alert(
+"Enter event"
+);
+
+}
+
+
+let {error} =
 await sb
 .from("events")
 .insert({
 
-title,
+title:title,
 
 date:$("edate").value,
 
@@ -619,8 +1239,16 @@ location:$("eloc").value
 
 });
 
-if(error)
-return msg(error.message,false);
+
+if(error){
+
+return msg(
+error.message,
+false
+);
+
+}
+
 
 $("etitle").value="";
 
@@ -628,56 +1256,118 @@ $("edate").value="";
 
 $("eloc").value="";
 
+
 await load();
 
 }
 
 
-async function del(table,id,storagePath){
+/* =================================
+DELETE
+================================= */
 
-if(!confirm("Delete this item?"))
+async function del(
+table,
+id,
+storagePath
+){
+
+if(
+!confirm(
+"Delete this item?"
+)
+){
+
 return;
 
-if(table==="memories"&&storagePath){
+}
+
+
+/* MEMORY PHOTO DELETE */
+
+if(
+table==="memories"
+&&
+storagePath
+){
 
 await sb.storage
 .from("memories")
-.remove([storagePath]);
+.remove(
+[storagePath]
+);
 
 }
 
-let {error}=
+
+/* PROFILE PHOTO DELETE */
+
+if(
+table==="friends"
+&&
+storagePath
+){
+
+await sb.storage
+.from("profiles")
+.remove(
+[storagePath]
+);
+
+}
+
+
+let {error} =
 await sb
 .from(table)
 .delete()
-.eq("id",id);
+.eq(
+"id",
+id
+);
 
-if(error)
-msg(error.message,false);
 
-else
+if(error){
+
+msg(
+error.message,
+false
+);
+
+}else{
+
 await load();
 
 }
 
+}
 
-/* ================================
-DISCUSSION
-================================ */
+
+/* =================================
+DISCUSSION VISITOR ID
+================================= */
 
 function getVisitorId(){
 
-let id=
+let id =
 localStorage.getItem(
 "azad_visitor_id"
 );
 
+
 if(!id){
 
-id=
+id =
 crypto.randomUUID
-? crypto.randomUUID()
-:Date.now()+"-"+Math.random();
+?
+crypto.randomUUID()
+:
+Date.now()
++
+"-"
++
+Math.random();
+
 
 localStorage.setItem(
 "azad_visitor_id",
@@ -686,18 +1376,24 @@ id
 
 }
 
+
 return id;
 
 }
 
 
+/* =================================
+DISCUSSION NAME
+================================= */
+
 function saveDiscussionName(){
 
-const name=
+const name =
 $("discussionName")
 .value.trim();
 
-if(name)
+if(name){
+
 localStorage.setItem(
 "azad_discussion_name",
 name
@@ -705,31 +1401,44 @@ name
 
 }
 
+}
+
 
 function loadDiscussionName(){
 
-const name=
+const name =
 localStorage.getItem(
 "azad_discussion_name"
 );
 
-if(name)
-$("discussionName").value=name;
+if(name){
+
+$("discussionName").value =
+name;
+
+}
 
 }
 
 
+/* =================================
+TIME AGO
+================================= */
+
 function timeAgo(date){
 
-const diff=
+const diff =
 Math.max(
 0,
-Date.now()-
+Date.now()
+-
 new Date(date).getTime()
 );
 
-const mins=
-Math.floor(diff/60000);
+const mins =
+Math.floor(
+diff/60000
+);
 
 if(mins<1)
 return "just now";
@@ -737,20 +1446,30 @@ return "just now";
 if(mins<60)
 return mins+" min ago";
 
-const hours=
-Math.floor(mins/60);
+const hours =
+Math.floor(
+mins/60
+);
 
 if(hours<24)
 return hours+" hr ago";
 
-const days=
-Math.floor(hours/24);
+const days =
+Math.floor(
+hours/24
+);
 
-if(days<30)
-return days+
-" day"+
-(days>1?"s":"")+
+if(days<30){
+
+return days
++
+" day"
++
+(days>1?"s":"")
++
 " ago";
+
+}
 
 return new Date(date)
 .toLocaleDateString();
@@ -758,25 +1477,34 @@ return new Date(date)
 }
 
 
-/* CREATE DISCUSSION */
+/* =================================
+CREATE DISCUSSION
+================================= */
 
 async function createDiscussion(){
 
 if(!sb)return;
 
-const name=
+const name =
 $("discussionName")
 .value.trim();
 
-const title=
+const title =
 $("discussionTitle")
 .value.trim();
 
-const content=
+const content =
 $("discussionContent")
 .value.trim();
 
-if(!name||!title||!content){
+
+if(
+!name
+||
+!title
+||
+!content
+){
 
 return discussionMsg(
 "Name, title and message are required.",
@@ -785,9 +1513,13 @@ false
 
 }
 
-discussionMsg("Posting...");
 
-const {error}=
+discussionMsg(
+"Posting..."
+);
+
+
+const {error} =
 await sb
 .from("discussions")
 .insert({
@@ -800,48 +1532,67 @@ content:content
 
 });
 
-if(error)
+
+if(error){
+
 return discussionMsg(
 error.message,
 false
 );
+
+}
+
 
 localStorage.setItem(
 "azad_discussion_name",
 name
 );
 
+
 $("discussionTitle").value="";
 
 $("discussionContent").value="";
 
+
 discussionMsg(
 "Discussion posted successfully."
 );
+
 
 await loadDiscussions();
 
 }
 
 
-/* ADD REPLY */
+/* =================================
+ADD REPLY
+================================= */
 
 async function addReply(id){
 
-const name=
+const name =
 $("replyName_"+id)
 .value.trim();
 
-const content=
+const content =
 $("replyText_"+id)
 .value.trim();
 
-if(!name||!content)
+
+if(
+!name
+||
+!content
+){
+
 return alert(
 "Name and reply are required."
 );
 
-const {error}=
+}
+
+
+const {error} =
 await sb
 .from("replies")
 .insert({
@@ -854,43 +1605,70 @@ content:content
 
 });
 
-if(error)
-return alert(error.message);
+
+if(error){
+
+return alert(
+error.message
+);
+
+}
+
 
 localStorage.setItem(
 "azad_discussion_name",
 name
 );
 
+
 $("replyText_"+id).value="";
+
 
 await loadDiscussions();
 
 }
 
 
-/* LIKE */
+/* =================================
+LIKE
+================================= */
 
-async function toggleLike(id,liked){
+async function toggleLike(
+id,
+liked
+){
 
-const visitorId=
+const visitorId =
 getVisitorId();
+
 
 if(liked){
 
-const {error}=
+const {error} =
 await sb
 .from("discussion_likes")
 .delete()
-.eq("discussion_id",id)
-.eq("visitor_id",visitorId);
+.eq(
+"discussion_id",
+id
+)
+.eq(
+"visitor_id",
+visitorId
+);
 
-if(error)
-return alert(error.message);
+
+if(error){
+
+return alert(
+error.message
+);
+
+}
 
 }else{
 
-const {error}=
+const {error} =
 await sb
 .from("discussion_likes")
 .insert({
@@ -901,42 +1679,61 @@ visitor_id:visitorId
 
 });
 
+
 if(
-error &&
-!String(error.message)
-.toLowerCase()
-.includes("duplicate")
+error
+&&
+!String(
+error.message
 )
-return alert(error.message);
+.toLowerCase()
+.includes(
+"duplicate"
+)
+){
+
+return alert(
+error.message
+);
 
 }
+
+}
+
 
 await loadDiscussions();
 
 }
 
 
-/* LOAD DISCUSSIONS */
+/* =================================
+LOAD DISCUSSIONS
+================================= */
 
 async function loadDiscussions(){
 
 if(!sb)return;
 
-const list=
+
+const list =
 $("discussionList");
+
 
 const [
 dRes,
 rRes,
 lRes
-]=await Promise.all([
+] =
+await Promise.all([
 
 sb
 .from("discussions")
 .select("*")
 .order(
 "created_at",
-{ascending:false}
+{
+ascending:false
+}
 ),
 
 sb
@@ -944,7 +1741,9 @@ sb
 .select("*")
 .order(
 "created_at",
-{ascending:true}
+{
+ascending:true
+}
 ),
 
 sb
@@ -955,58 +1754,87 @@ sb
 
 
 if(
-dRes.error||
-rRes.error||
+dRes.error
+||
+rRes.error
+||
 lRes.error
 ){
 
-list.innerHTML=
-'<div class="empty">Discussion could not be loaded.</div>';
+list.innerHTML =
+`
+<div class="empty">
+Discussion could not be loaded.
+</div>
+`;
 
 return;
 
 }
 
 
-const discussions=
-dRes.data||[];
+const discussions =
+dRes.data || [];
 
-const replies=
-rRes.data||[];
+const replies =
+rRes.data || [];
 
-const likes=
-lRes.data||[];
+const likes =
+lRes.data || [];
 
-const visitorId=
+const visitorId =
 getVisitorId();
 
 
-if(!discussions.length){
+if(
+!discussions.length
+){
 
-list.innerHTML=
-'<div class="empty">No discussions yet. Be the first to start one! 🎉</div>';
+list.innerHTML =
+`
+<div class="empty">
+No discussions yet.
+Be the first to start one! 🎉
+</div>
+`;
 
 return;
 
 }
 
 
-list.innerHTML=
-discussions.map(d=>{
+list.innerHTML =
+discussions
+.map(d=>{
 
-const dr=
+const dr =
 replies.filter(
-r=>String(r.discussion_id)===String(d.id)
+r=>
+String(
+r.discussion_id
+)
+===
+String(d.id)
 );
 
-const dl=
+
+const dl =
 likes.filter(
-l=>String(l.discussion_id)===String(d.id)
+l=>
+String(
+l.discussion_id
+)
+===
+String(d.id)
 );
 
-const liked=
+
+const liked =
 dl.some(
-l=>l.visitor_id===visitorId
+l=>
+l.visitor_id
+===
+visitorId
 );
 
 
@@ -1020,7 +1848,8 @@ ${esc(d.title)}
 
 <div class="discussion-meta">
 
-👤 ${esc(d.author_name)}
+👤
+${esc(d.author_name)}
 ·
 ${timeAgo(d.created_at)}
 
@@ -1036,7 +1865,13 @@ ${esc(d.content)}
 <div class="discussion-actions">
 
 <button
-class="${liked?"primary":"muted"}"
+class="${
+liked
+?
+"primary"
+:
+"muted"
+}"
 onclick="toggleLike(
 '${d.id}',
 ${liked}
@@ -1050,7 +1885,8 @@ ${dl.length}
 
 <span class="small">
 
-💬 ${dr.length}
+💬
+${dr.length}
 ${dr.length===1?"reply":"replies"}
 
 </span>
@@ -1077,7 +1913,11 @@ ${esc(r.author_name)}
 </b>
 
 <div class="small">
-${timeAgo(r.created_at)}
+
+${timeAgo(
+r.created_at
+)}
+
 </div>
 
 <div
@@ -1086,7 +1926,9 @@ margin-top:5px;
 white-space:pre-wrap
 "
 >
+
 ${esc(r.content)}
+
 </div>
 
 </div>
@@ -1094,7 +1936,14 @@ ${esc(r.content)}
 `).join("")
 
 :
-'<div class="small" style="margin-top:8px">No replies yet.</div>'
+`
+<div
+class="small"
+style="margin-top:8px"
+>
+No replies yet.
+</div>
+`
 }
 
 
@@ -1112,7 +1961,9 @@ placeholder="Write a reply..."
 
 <button
 class="primary"
-onclick="addReply('${d.id}')"
+onclick="addReply(
+'${d.id}'
+)"
 >
 Reply
 </button>
@@ -1125,7 +1976,8 @@ Reply
 
 `;
 
-}).join("");
+})
+.join("");
 
 
 loadDiscussionNameIntoReplies();
@@ -1133,77 +1985,104 @@ loadDiscussionNameIntoReplies();
 }
 
 
+/* =================================
+REPLY NAME AUTO FILL
+================================= */
+
 function loadDiscussionNameIntoReplies(){
 
-const name=
+const name =
 localStorage.getItem(
 "azad_discussion_name"
 );
 
 if(!name)return;
 
+
 document
 .querySelectorAll(
 'input[id^="replyName_"]'
 )
-.forEach(x=>
+.forEach(
+x=>
 x.value=name
 );
 
 }
 
 
-/* ================================
+/* =================================
 LOAD WEBSITE
-================================ */
+================================= */
 
 async function load(){
 
 if(!sb){
 
-$("friends").innerHTML=
-'<div class="empty">Supabase setup required.</div>';
+$("friends").innerHTML =
+`
+<div class="empty">
+Supabase setup required.
+</div>
+`;
 
 return;
 
 }
 
 
-let f=
+let f =
 await sb
 .from("friends")
 .select("*")
 .order(
 "created_at",
-{ascending:false}
+{
+ascending:false
+}
 );
 
 
-let m=
+let m =
 await sb
 .from("memories")
 .select("*")
 .order(
 "created_at",
-{ascending:false}
+{
+ascending:false
+}
 );
 
 
-let e=
+let e =
 await sb
 .from("events")
 .select("*")
 .order(
 "date",
-{ascending:true}
+{
+ascending:true
+}
 );
 
 
-if(f.error||m.error||e.error){
+if(
+f.error
+||
+m.error
+||
+e.error
+){
 
 msg(
-(f.error||m.error||e.error)
-.message,
+(
+f.error
+||
+m.error
+||
+e.error
+).message,
 false
 );
 
@@ -1212,15 +2091,37 @@ return;
 }
 
 
-$("friends").innerHTML=
+/* =================================
+FRIENDS DISPLAY
+================================= */
+
+$("friends").innerHTML =
 f.data.length
 ?
-f.data.map(x=>`
+f.data
+.map(x=>`
 
 <div class="card">
 
 <div class="avatar">
+
+${
+x.photo_url
+?
+`
+<img
+src="${esc(x.photo_url)}"
+alt="${esc(x.name)}"
+>
+`
+:
+`
+<span>
 ${esc(x.emoji)}
+</span>
+`
+}
+
 </div>
 
 <h3>
@@ -1233,22 +2134,32 @@ ${esc(x.role)}
 
 </div>
 
-`).join("")
+`)
+.join("")
 
 :
-'<div class="empty">No friends added.</div>';
+`
+<div class="empty">
+No friends added.
+</div>
+`;
 
 
-$("memories").innerHTML=
+/* =================================
+MEMORIES DISPLAY
+================================= */
+
+$("memories").innerHTML =
 m.data.length
 ?
-m.data.map(x=>`
+m.data
+.map(x=>`
 
 <div class="card">
 
 <img
 class="photo"
-src="${x.image_url}"
+src="${esc(x.image_url)}"
 alt=""
 >
 
@@ -1266,16 +2177,26 @@ ${esc(x.caption)}
 
 </div>
 
-`).join("")
+`)
+.join("")
 
 :
-'<div class="empty">No memories added.</div>';
+`
+<div class="empty">
+No memories added.
+</div>
+`;
 
 
-$("events").innerHTML=
+/* =================================
+EVENTS DISPLAY
+================================= */
+
+$("events").innerHTML =
 e.data.length
 ?
-e.data.map(x=>`
+e.data
+.map(x=>`
 
 <div class="card">
 
@@ -1285,35 +2206,48 @@ ${esc(x.title)}
 
 <p>
 
-📅 ${esc(x.date)}
+📅
+${esc(x.date)}
 
 <br>
 
-📍 ${esc(x.location)}
+📍
+${esc(x.location)}
 
 </p>
 
 </div>
 
-`).join("")
+`)
+.join("")
 
 :
-'<div class="empty">No events added.</div>';
+`
+<div class="empty">
+No events added.
+</div>
+`;
 
 
-let s=[
+/* =================================
+MANAGE CONTENT
+================================= */
+
+let s = [
 
 ...f.data.map(x=>`
 
 <div class="row">
 
-👤 ${esc(x.name)}
+👤
+${esc(x.name)}
 
 <button
 class="danger"
 onclick="del(
 'friends',
-'${x.id}'
+'${x.id}',
+'${esc(x.photo_path || "")}'
 )"
 >
 Delete
@@ -1323,18 +2257,20 @@ Delete
 
 `),
 
+
 ...m.data.map(x=>`
 
 <div class="row">
 
-📸 ${esc(x.title)}
+📸
+${esc(x.title)}
 
 <button
 class="danger"
 onclick="del(
 'memories',
 '${x.id}',
-'${esc(x.storage_path)}'
+'${esc(x.storage_path || "")}'
 )"
 >
 Delete
@@ -1344,11 +2280,13 @@ Delete
 
 `),
 
+
 ...e.data.map(x=>`
 
 <div class="row">
 
-📅 ${esc(x.title)}
+📅
+${esc(x.title)}
 
 <button
 class="danger"
@@ -1367,21 +2305,27 @@ Delete
 ];
 
 
-$("manage").innerHTML=
+$("manage").innerHTML =
 s.join("")
 ||
-'<div class="empty">Nothing yet.</div>';
+`
+<div class="empty">
+Nothing yet.
+</div>
+`;
 
 }
 
 
-/* ================================
-SECURITY
-================================ */
+/* =================================
+SECURITY / ESCAPE
+================================= */
 
 function esc(s){
 
-return String(s??"")
+return String(
+s ?? ""
+)
 .replace(
 /[&<>"']/g,
 c=>({
@@ -1393,15 +2337,14 @@ c=>({
 "'":"&#039;"
 
 }[c])
-
 );
 
 }
 
 
-/* ================================
+/* =================================
 INIT
-================================ */
+================================= */
 
 async function init(){
 
@@ -1422,7 +2365,7 @@ loadDiscussionName();
 
 let {
 data:{session}
-}=
+} =
 await sb.auth.getSession();
 
 

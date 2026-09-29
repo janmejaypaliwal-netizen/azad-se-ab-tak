@@ -38,7 +38,7 @@
 
 <script>
 const SUPABASE_URL="https://tqsvrrclaaqjjechhuyj.supabase.co";
-const SUPABASE_ANON_KEY="const SUPABASE_ANON_KEY="sb_publishable_5ILH9zfeLO5DRt3eOuso_g_xtX_wn4S";
+const SUPABASE_ANON_KEY="sb_publishable_5ILH9zfeLO5DRt3eOuso_g_xtX_wn4S";
 const configured=!SUPABASE_URL.startsWith("PASTE_")&&!SUPABASE_ANON_KEY.startsWith("PASTE_");
 const sb=configured?supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
 const $=id=>document.getElementById(id);
